@@ -1,11 +1,11 @@
-﻿using Sabio.Data;
-using Sabio.Data.Providers;
-using Sabio.Models;
-using Sabio.Models.Domain;
-using Sabio.Models.Requests.Addresses;
-using Sabio.Models.Requests.ccCourses;
-using Sabio.Models.Requests.Friends;
-using Sabio.Services.Interfaces;
+using Cc.Data;
+using Cc.Data.Providers;
+using Cc.Models;
+using Cc.Models.Domain;
+using Cc.Models.Requests.Addresses;
+using Cc.Models.Requests.ccCourses;
+using Cc.Models.Requests.Friends;
+using Cc.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sabio.Services
+namespace Cc.Services
 {
 	public class ccCourseService: IccCourseService
 	{
@@ -25,7 +25,6 @@ namespace Sabio.Services
 			_data = data;
 		}
 
-		//Add (Insert)
 		public int Add(ccCourseAddRequest model, int userId)
 		{
 			int id = 0;
@@ -50,7 +49,6 @@ namespace Sabio.Services
 			return id;
 		}
 
-		//Update
 		public void Update(ccCourseUpdateRequest model, int userId)
 		{
 			string procName = "[dbo].[ccCourse_Update]";
@@ -65,7 +63,6 @@ namespace Sabio.Services
 				returnParameters: null);
 		}
 
-		//GetById (Select by Id)
 		public ccCourse GetById(int id)
 		{
 			string procName = "[dbo].[ccCourse_SelectById]";
@@ -85,7 +82,6 @@ namespace Sabio.Services
 			return course;
 		}
 
-		//Delete
 		public void Delete(int id)
 		{
 			string procName = "[dbo].[ccStudent_Delete]";
@@ -99,7 +95,6 @@ namespace Sabio.Services
 			);
 		}
 
-		//GetPaginated (Select All Joined)
 		public Paged<ccCourse> GetPaginated(int pageIndex, int pageSize)
 		{
 			string procName = "[dbo].[ccCourse_SelectAllPaginated]";
@@ -135,7 +130,6 @@ namespace Sabio.Services
 
 		//Mappers follow
 
-		//Mapper - MapCourse (joined)
 		private static ccCourse MapCourse(IDataReader reader)
 		{
 			ccCourse course = new ccCourse();
@@ -156,8 +150,6 @@ namespace Sabio.Services
 			return course;
 		}
 
-
-		//Mapper - AddCommonParams
 		private static void AddCommonParams(ccCourseAddRequest model, SqlParameterCollection col)
 		{
 			col.AddWithValue("@Name", model.Name);
