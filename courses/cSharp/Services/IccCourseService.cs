@@ -8,7 +8,7 @@ using Cc.Models;
 using Cc.Models.Domain;
 using Cc.Models.Requests.ccCourses;
 
-namespace Sabio.Services.Interfaces
+namespace Cc.Services.Interfaces
 {
 	public interface IccCourseService
 	{
